@@ -1,6 +1,11 @@
 <!DOCTYPE html>
+<head>
 <meta charset="utf-8">
 <style>
+
+.center {
+  text-align: center;
+}
 
 svg {
   font: 10px sans-serif;
@@ -22,7 +27,7 @@ svg {
 }
 
 .title {
-  font: 300 78px Helvetica Neue;
+  font: 300 50px Helvetica Neue;
   fill: #666;
 }
 
@@ -45,13 +50,23 @@ rect:first-child {
 }
 
 </style>
+<title>台灣人口金字塔</title>
+</head>
 <body>
+<h1 class="center">台灣人口金字塔 1946 ~ 2011 年</h1>
+<div id="svg" style="border: 1px solid; border-color: #ddd"></div>
+<div>
+  <p>請使用鍵盤的左右方向鍵切換年份</p>
+  <p>柱狀上方如果是藍色，表示該年齡區間男性人口比女性人口多，紫色的部份則為女性人口數量</p>
+  <p>柱狀上方如果是粉紅色，表示該年齡區間女性人口比男性人口多，紫色的部份則為男性人口數量</p>
+  <p>資料來源: <a href="http://www.ris.gov.tw/346">內政部戶政司人口統計資料</a> 年底人口按性別及年齡</p>
+</div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 20, right: 40, bottom: 30, left: 20},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom,
+var margin = {top: 20, right: 40, bottom: 20, left: 40},
+    width = 1100 - margin.left - margin.right,
+    height = 440 - margin.top - margin.bottom,
     barWidth = Math.floor(width / 21) - 1;
 
 var x = d3.scale.linear()
@@ -64,10 +79,10 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("right")
     .tickSize(-width)
-    .tickFormat(function(d) { return Math.round(d / 1e5) + "十萬"; });
+    .tickFormat(function(d) { return Math.round(d / 1e5)/10 + " M"; });
 
 // An SVG element with a bottom-right origin.
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#svg").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
