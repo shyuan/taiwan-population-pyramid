@@ -8,4 +8,4 @@ Population pyramid of Taiwan
 
 # 時間
   * [1946 ~ 2011](https://shyuan.github.io/taiwan-population-pyramid/index.html)
-  * [2012 ~ 2060](https://shyuan.github.io/taiwan-population-pyramid/index.html)
+  * [2012 ~ 2060](https://shyuan.github.io/taiwan-population-pyramid/index2.html)
